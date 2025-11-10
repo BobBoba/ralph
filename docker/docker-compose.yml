@@ -5,7 +5,7 @@ services:
     image: allegro/ralph:latest
     restart: always
     ports:
-      - "8000"
+      - "8090"
     volumes:
       - ralph_media:/var/local/ralph/media
       - ralph_static:/usr/share/ralph/static
@@ -20,7 +20,7 @@ services:
         DATABASE_HOST: db
         REDIS_HOST: redis
         REDIS_PASSWORD: ""
-        REDIS_PORT: 6379
+        REDIS_PORT: 6380
         REDIS_DB: 0
 
   nginx:
@@ -28,7 +28,7 @@ services:
     image: allegro/ralph-static-nginx:latest
     restart: always
     ports:
-      - "80:80"
+      - "8091:80"
     volumes:
       - ralph_media:/opt/media
 
@@ -49,7 +49,7 @@ services:
     image: redis:3.0
     restart: always
     ports:
-      - "6379"
+      - "6380"
 
   inkpy:
     build:
@@ -62,7 +62,7 @@ services:
     environment:
         REDIS_HOST: redis
         REDIS_PASSWORD: ""
-        REDIS_PORT: 6379
+        REDIS_PORT: 6380
         REDIS_DB: 0
 
 volumes:
