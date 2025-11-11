@@ -5,7 +5,7 @@ services:
     image: allegro/ralph:latest
     restart: always
     ports:
-      - "32774:8000"
+      - "8000"
     volumes:
       - ralph_media:/var/local/ralph/media
       - ralph_static:/usr/share/ralph/static
@@ -44,7 +44,7 @@ services:
     volumes:
       - ralph_dbdata:/var/lib/mysql
     ports:
-      - "32771:3306"
+      - "3306"
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   redis:
@@ -52,7 +52,7 @@ services:
     image: redis:3.0
     restart: always
     ports:
-      - "6380:6379"
+      - "6379"
 
   inkpy:
     build:
@@ -65,7 +65,7 @@ services:
     environment:
         REDIS_HOST: redis
         REDIS_PASSWORD: ""
-        REDIS_PORT: 6380
+        REDIS_PORT: 6379
         REDIS_DB: 0
 
 volumes:
