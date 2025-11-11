@@ -18,10 +18,9 @@ services:
         DATABASE_USER: ralph_ng
         DATABASE_PASSWORD: ralph_ng
         DATABASE_HOST: db
-        DATABASE_PORT: 32771
         REDIS_HOST: redis
         REDIS_PASSWORD: ""
-        REDIS_PORT: 6380
+        REDIS_PORT: 6379
         REDIS_DB: 0
 
   nginx:
@@ -43,8 +42,6 @@ services:
       MYSQL_PASSWORD: ralph_ng
     volumes:
       - ralph_dbdata:/var/lib/mysql
-    ports:
-      - "3306"
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   redis:
